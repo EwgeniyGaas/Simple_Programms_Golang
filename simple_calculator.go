@@ -11,8 +11,9 @@ func main() {
 		buffer_rest_str string // пожирает остаток строки, в том числе перенос строки
 	)
 	for true {
+		num1, num2, sign, result = 0, 0, "", 0
 		fmt.Print("\nВведите выражение: ")
-		fmt.Scanf("%v%1s%v%v", &num1, &sign, &num2, buffer_rest_str)
+		fmt.Scanf("%v%1s%v%v", &num1, &sign, &num2, &buffer_rest_str)
 		
 		switch sign {
 			case "+":
