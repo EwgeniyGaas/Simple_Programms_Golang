@@ -55,21 +55,21 @@ func isRomanValueCorrect(values []int, i int) bool {
 
 // Преобразует римское число в арабские
 func romanToInt(s string) int {
-	var values []int
 	var result int
 	
 	slice_str := strings.Split(s, "")
+	values := make([]int, len(slice_str))
 	
 	for i := range(slice_str) { // преобразует римские цифры в соответствующие арабские числа
 		switch slice_str[i] {
-			case "I": values = append(values, 1)
-			case "V": values = append(values, 5)
-			case "X": values = append(values, 10)
-			case "L": values = append(values, 50)
-			case "C": values = append(values, 100)
-			case "D": values = append(values, 500)
-			case "M": values = append(values, 1000)
-			default: return 0
+			case "I": values[i] = 1
+			case "V": values[i] = 5
+			case "X": values[i] = 10
+			case "L": values[i] = 50
+			case "C": values[i] = 100
+			case "D": values[i] = 500
+			case "M": values[i] = 1000
+			default: return 0 // если в строке не стандартные символы
 		}
 	}
 	result = values[len(values)-1]  // последний элемент. Цикл ниже начнём с предпоследнего
@@ -104,4 +104,5 @@ func main() {
 	fmt.Println("MMXXMII =", romanToInt("MMXXMII")) // -> 0  incorrect value
 	fmt.Println("DM =", romanToInt("DM"))           // -> 0  incorrect value
 	fmt.Println("MD =", romanToInt("MD"))           // -> 1500
+	fmt.Println("DA =", romanToInt("DA"))           // -> 0  incorrect value, false simbol
 }
